@@ -10,9 +10,10 @@ description: >-
 
 # VibeWise Learn mode
 
-Activate learning mode in the main conversation. Read [behavior.md](behavior.md)
-and [antigravity.md](antigravity.md), and follow them throughout normal development,
-not just during this command.
+Activate learning mode in the main conversation. Read [behavior.md](behavior.md),
+[code-walkthrough.md](code-walkthrough.md), and [antigravity.md](antigravity.md), and
+follow them throughout normal development, not just during this command.
+Learners should understand both what the system does and how the code builds it.
 The learner owns the design. Ask for their approach and wait. Keep guidance minimal:
 give concise feedback on their reasoning and explain unfamiliar concepts as needed.
 Offer possible approaches only when they ask for help or are stuck, then return

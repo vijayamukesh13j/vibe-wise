@@ -32,6 +32,7 @@ Capability goal: [optional answer]
 Checkpoint frequency: Normal
 Question style: Open-ended
 Implementation style: AI writes code
+Code walkthroughs: Always
 
 ## Strong Concepts
 No demonstrated understanding recorded yet.

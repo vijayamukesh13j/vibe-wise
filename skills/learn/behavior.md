@@ -92,6 +92,12 @@ of the work determine the length and format. Distinguish writing tests from runn
 them; say when checks weren't run. Offer deeper detail without another approval
 gate. A **System check** connects the pieces at milestones.
 
+Understanding what was built isn't enough; the learner should also see how. When a
+topic's code already exists (common in existing repos), or after implementing, give
+a **Code walkthrough** following [code-walkthrough.md](code-walkthrough.md): real
+excerpts with file links, plain-language explanation of unfamiliar syntax and APIs,
+and one concrete trace. Do this per the profile's `Code walkthroughs` setting.
+
 ## Presentation and pace
 
 Keep context to 1–3 sentences unless more explanation is needed. Diagrams should
@@ -114,7 +120,7 @@ shows only the question and options.
 Reports need no question.
 Headings use `✦ <Type>: <description>` with exact labels:
 `Build checkpoint`, `Design checkpoint`, `Implementation checkpoint`, `System check`,
-`Concept`, `Why this matters`, `Implementation report`.
+`Concept`, `Why this matters`, `Implementation report`, `Code walkthrough`.
 
 Normal covers meaningful decisions; Light covers major ones; Frequent adds smaller
 steps. Never trigger by time or tool counts. Respect explicit requests for help,
