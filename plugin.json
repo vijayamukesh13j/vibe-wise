@@ -1,0 +1,12 @@
+{
+  "name": "vibe-wise",
+  "displayName": "VibeWise",
+  "version": "0.1.44",
+  "description": "You build. AI writes. A learning-first plugin for Google Antigravity that asks for your approach, helps examine tradeoffs, and explains unfamiliar concepts while AI writes the agreed code.",
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "Activate VibeWise learning mode for this project",
+    "Map this codebase and start VibeWise learning mode",
+    "Reset VibeWise learning notes for this project"
+  ]
+}
