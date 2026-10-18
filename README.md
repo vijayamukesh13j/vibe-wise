@@ -6,7 +6,7 @@
 
 A plugin for **Google Antigravity** (Antigravity IDE, Antigravity 2.0, and the `agy` CLI) that puts engineering learning first and keeps you in control while AI writes the code you designed.
 
-Instead of generating an entire feature while you watch passively, Antigravity **asks for your approach first**, helps you examine tradeoffs, and explains unfamiliar concepts. You shape the architecture and decide when a step is ready to implement. Antigravity writes the agreed code, runs verification checks, and explains what it changed and why.
+Instead of generating an entire feature while you watch passively, Antigravity **asks for your approach first**, helps you examine tradeoffs, and explains unfamiliar concepts. You shape the architecture and decide when a step is ready to implement. Antigravity writes the agreed code, runs verification checks, and walks you through both **what** was built and **how** the code actually works—with real file excerpts, line-by-line syntax explanations, and concrete traces.
 
 Built for anyone who wants to learn as they build—whether you're an aspiring software engineer, a junior developer, or an experienced engineer exploring an unfamiliar codebase or stack.
 
@@ -39,7 +39,7 @@ Built for anyone who wants to learn as they build—whether you're an aspiring s
 VibeWise is packaged as a native Google Antigravity customization bundle:
 
 1. **On-Demand Skills (`skills/learn` & `skills/reset`)**:
-   - **`learn`**: Runs interactive onboarding using Antigravity's native `ask_question` modal, maps existing repositories, and enforces the learner-led **Build → Design → Implementation → Report** loop.
+   - **`learn`**: Runs interactive onboarding using Antigravity's native `ask_question` modal, maps existing repositories, and enforces the learner-led **Build → Design → Implementation → Report & Code Walkthrough** loop.
    - **`reset`**: Previews and safely backs up `.vibe-wise/` learning notes into `.vibe-wise/backups/` using a cryptographic snapshot token before restarting onboarding.
 2. **Automatic Session & Turn Restoration (`hooks.json` → `hooks/session_start.py`)**:
    - Registers a lightweight, read-only **`PreInvocation`** hook. When your project has an active `.vibe-wise/profile.md`, the hook injects a transient `ephemeralMessage` on the first model call of a turn (`invocationNum == 1`) instructing Antigravity to load `skills/learn/SKILL.md` and restore your profile, project map, and any pending checkpoint decisions—even across restarts or `/compact`.
@@ -130,6 +130,7 @@ Once onboarding completes, ask Antigravity to build or change anything in your p
 - If a concept is unfamiliar, ask for an explanation or say *"I'm stuck"*—Antigravity explains the concept (`✦ Concept` and `✦ Why this matters`) and returns the design choice to you.
 - When a design takes shape, Antigravity presents a **`✦ Design checkpoint`** or **`✦ Implementation checkpoint`** and opens an interactive confirmation picker (**Confirm and continue** / **Implement this step** vs **Discuss**).
 - Only after you select **Implement this step** does Antigravity write the code, run tests, and present a concise **`✦ Implementation report`**.
+- Whenever a topic's code already exists in the repo or has just been written, Antigravity follows up with a **`✦ Code walkthrough`** (`Code walkthroughs: Always` by default): quoting real 5–25 line excerpts with clickable file/line links, explaining unfamiliar syntax or framework APIs line by line, and tracing one concrete input through the code step by step.
 
 ### 4. Reset Project Learning Notes
 
@@ -249,6 +250,7 @@ After you choose **Implement this step**, Antigravity writes the code, runs the 
 | `✦ Design checkpoint: <topic>` | Summarizes the proposed design and tradeoffs. **Confirm and continue** records the design without writing code yet. |
 | `✦ Implementation checkpoint: <topic>` | Describes the exact code changes ready to be made. **Implement this step** authorizes Antigravity to write the code. |
 | `✦ Implementation report: <topic>` | Explains what changed, how the key code works, how it fits your design, and test verification results. |
+| `✦ Code walkthrough: <topic>` | Shows *how* the code is built: file map, small real code excerpts with line links, plain-language syntax/API breakdown, and a concrete step-by-step trace. |
 | `✦ System check: <topic>` | Connects how components fit together at key milestones. |
 | `✦ Concept: <topic>` | Explains what an unfamiliar concept is or how it works (no mandatory quiz). |
 | `✦ Why this matters: <topic>` | Explains the practical relevance or consequences of a concept in your project. |
@@ -270,6 +272,7 @@ Experience level changes the teaching support you receive, never your ownership 
 You can adjust VibeWise anytime in plain English without resetting:
 
 - *"Use fewer checkpoints"* / *"Set checkpoint frequency to Light"*
+- *"Only show code walkthroughs when I ask"* (switches `Code walkthroughs` from `Always` to `On request`)
 - *"Focus on backend architecture"*
 - *"Use multiple-choice questions"*
 - *"Just implement this one"* (skips the checkpoint loop for the current request)
@@ -311,6 +314,7 @@ vibe-wise/
 │   │   ├── SKILL.md             # Main learn skill entrypoint
 │   │   ├── antigravity.md       # Antigravity tool mappings (view_file, ask_question, etc.)
 │   │   ├── behavior.md          # Core learning loop, checkpoints, and evidence rules
+│   │   ├── code-walkthrough.md  # "How it's built" code walkthrough guide (excerpts, syntax, traces)
 │   │   ├── onboarding.md        # Step-by-step onboarding flow
 │   │   ├── state-templates.md   # Templates for profile.md, progress.md, project-map.md
 │   │   └── codex.md             # Multi-agent compatibility notes
